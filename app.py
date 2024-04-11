@@ -15,18 +15,20 @@ mediumList = []
 def login():
     username = request.form['username']
     password = request.form['password']
-
-    if username not in mock_database:
-        return render_template('login.html', info="Invalid user")
+    if (username == "aryan"):
+        return render_template("main.html", name=username)
+    elif (username == "jack"):
+        return render_template("nurse-dashboard.html", name=username)
+    elif (username == "v"):
+        return render_template("v_main.html", name=username)
     else:
-        if mock_database[username] != password:
-            return render_template('login.html', info="Invalid Password")
-        else:  
-            return render_template("main.html", name=username)
+        return render_template('login.html', info="Invalid Username")
+
+
 
 @app.route('/')
 def home():
-    return render_template('diary.html')
+    return render_template('login.html')
 
 @app.route('/submit_mood', methods=['POST'])
 def submit_mood():
