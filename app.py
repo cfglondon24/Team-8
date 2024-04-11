@@ -38,7 +38,6 @@ def submit_mood():
 
     return render_template('user_personal_dashboard.html')
 
-
 @app.route('/tracker', methods=['POST', 'GET'])
 def tracker():
     mood = request.form["mood"]
