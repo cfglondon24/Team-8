@@ -42,8 +42,6 @@ def submit_mood():
 
     return render_template('user_personal_dashboard.html')
 
-
-
 @app.before_request
 def login_handle():
     g.username = session.get('username')
@@ -71,6 +69,7 @@ def friends():
 @app.route("/profile", methods=["GET", "POST"])
 def profile():
     return render_template("user_personal_dashboard.html")
+
 
 if __name__ == '__main__':
     app.run(debug=True)
