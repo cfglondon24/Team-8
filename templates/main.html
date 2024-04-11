@@ -71,6 +71,7 @@
   z-index: 9;
 }
 
+
 /* Add styles to the form container */
 .form-container {
   max-width: 300px;
@@ -118,18 +119,103 @@
 }
 
 
-.full-page-image {
-        position: absolute;
-        top: 40%;
-        left: 30%;
-        transform: translate(-30%, -40%);
-        padding: 20px;
-        width: 300px;
-        background-color: rgba(0, 0, 0, 0.5); /* Adjust background opacity here */
-        color: white; /* Text color */
-    }
 
-    </style>
+@keyframes fadeIn {
+    from { opacity: 0; transform: translate(-50%, -45%); }
+    to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+.mood-form {
+    background-color: #f8f9fa; /* Lighter and softer background color */
+    padding: 30px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 360px; /* Adjusted width for better layout */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    z-index: 10;
+    font-family: 'Arial', sans-serif;
+    animation: fadeIn 1s;
+}
+
+.score-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px; /* Space between sections */
+}
+
+.mood-btn {
+    background-color: #ffffff; /* Default white background */
+    border: none;
+    border-radius: 25px; /* More pronounced rounded corners */
+    padding: 12px 24px;
+    margin: 6px;
+    cursor: pointer;
+    transition: all 0.3s; /* Smooth transition for all changes */
+    color: #333;
+    font-weight: bold;
+    width: 100%; /* Full width for better touch interaction */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    text-align: center;
+}
+
+.mood-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Gradient and hover effects */
+.mood-btn[data-mood="Very Unpleasant"]:hover { background: linear-gradient(to right, #FFC2C2, #FFDADA); color: white; }
+.mood-btn[data-mood="Unpleasant"]:hover { background: linear-gradient(to right, #FFD9C2, #FFE9DA); }
+.mood-btn[data-mood="Neutral"]:hover { background: linear-gradient(to right, #FFEDC2, #FFFADA); }
+.mood-btn[data-mood="Pleasant"]:hover { background: linear-gradient(to right, #E4FFC2, #F1FFDA); }
+.mood-btn[data-mood="Very Pleasant"]:hover { background: linear-gradient(to right, #C2FFC2, #DAFFDA); }
+
+.input-field {
+    width: calc(100% - 20px);
+    padding: 15px;
+    margin: 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    display: block; /* Ensure it's always visible if needed */
+    transition: all 0.3s;
+}
+
+.input-field, .submit-btn {
+    display: none; /* Initially hidden */
+}
+
+.input-field.show, .submit-btn.show {
+    display: block; /* Show only after specific actions */
+}
+
+
+.input-field:focus {
+    border-color: #80bdff;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.submit-btn {
+    background-color: #E4FFC2;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.submit-btn:hover {
+    background-color: #E4FFC2;
+    transform: translateY(-2px);
+}
+
+</style>
 </head>
 <body>
     <div class="menu-bar">
@@ -152,31 +238,44 @@
         </div>
     </div>
 
-
-    <div class="full-page-image">
-        <div class="overlay">
-            <div class="content">
-                <h1>Our nurses support 100s of people every day</h1>
-                <button>Get Support</button>
+    
+    
+    <form id="moodForm" action="/submit_mood" method="POST">
+        <div class="mood-form">
+            <h2>How are you feeling today?</h2>
+            <div id="emotionalScore" class="score-options">
+                <span>Select your emotional mood:</span>
+                <button type="button" class="mood-btn" data-mood="Very Unpleasant" onclick="selectMood('emotional', 'Very Unpleasant')">Very Unpleasant</button>
+                <button type="button" class="mood-btn" data-mood="Unpleasant" onclick="selectMood('emotional', 'Unpleasant')">Unpleasant</button>
+                <button type="button" class="mood-btn" data-mood="Neutral" onclick="selectMood('emotional', 'Neutral')">Neutral</button>
+                <button type="button" class="mood-btn" data-mood="Pleasant" onclick="selectMood('emotional', 'Pleasant')">Pleasant</button>
+                <button type="button" class="mood-btn" data-mood="Very Pleasant" onclick="selectMood('emotional', 'Very Pleasant')">Very Pleasant</button>
             </div>
+            <div id="cognitiveScore" class="score-options" style="display:none;">
+                <span>Select your cognitive mood:</span>
+                <button type="button" class="mood-btn" data-mood="Very Unpleasant" onclick="selectMood('cognitive', 'Very Unpleasant')">Very Unpleasant</button>
+                <button type="button" class="mood-btn" data-mood="Unpleasant" onclick="selectMood('cognitive', 'Unpleasant')">Unpleasant</button>
+                <button type="button" class="mood-btn" data-mood="Neutral" onclick="selectMood('cognitive', 'Neutral')">Neutral</button>
+                <button type="button" class="mood-btn" data-mood="Pleasant" onclick="selectMood('cognitive', 'Pleasant')">Pleasant</button>
+                <button type="button" class="mood-btn" data-mood="Very Pleasant" onclick="selectMood('cognitive', 'Very Pleasant')">Very Pleasant</button>
+            </div>
+            <div id="physicalScore" class="score-options" style="display:none;">
+                <span>Select your physical mood:</span>
+                <button type="button" class="mood-btn" data-mood="Very Unpleasant" onclick="selectMood('physical', 'Very Unpleasant')">Very Unpleasant</button>
+                <button type="button" class="mood-btn" data-mood="Unpleasant" onclick="selectMood('physical', 'Unpleasant')">Unpleasant</button>
+                <button type="button" class="mood-btn" data-mood="Neutral" onclick="selectMood('physical', 'Neutral')">Neutral</button>
+                <button type="button" class="mood-btn" data-mood="Pleasant" onclick="selectMood('physical', 'Pleasant')">Pleasant</button>
+                <button type="button" class="mood-btn" data-mood="Very Pleasant" onclick="selectMood('physical', 'Very Pleasant')">Very Pleasant</button>
+            </div>
+            <input type="hidden" id="emotionalScoreInput" name="emotionalScore">
+            <input type="hidden" id="cognitiveScoreInput" name="cognitiveScore">
+            <input type="hidden" id="physicalScoreInput" name="physicalScore">
+            <textarea id="moodMessage" class="input-field" name="moodMessage" placeholder="Share your thoughts..." style="display:none;"></textarea>
+            <button type="submit" class="submit-btn" style="display:none;">Submit</button>
         </div>
-    </div>
-
-    <div id="content">
-        {% with flashes = get_flashed_messages() %}
-        {% if flashes %}
-        <div  class="flashes">
+    </form>
     
-            <strong>  {% for f in flashes %}
-            {{ f }}
-            {% endfor %}
-                </strong>
-            <br>
-            <br>
     
-        </div>
-        {% endif %}
-        {% endwith %}
 
 
     <button class="open-button" onclick="openChat()">Open Chat</button>
@@ -212,6 +311,41 @@
                 document.getElementById("messageInput").value = "";
             }
         }
+
+        function submitMood() {
+            var moodScore = document.getElementById("moodScore").value;
+            var moodMessage = document.getElementById("moodMessage").value;
+            if (moodScore.trim() !== "" && moodMessage.trim() !== "") {
+
+                console.log("Mood Score: " + moodScore + ", Message: " + moodMessage);
+
+                document.getElementById("moodScore").value = "";
+                document.getElementById("moodMessage").value = "";
+                alert("Thank you for sharing how you feel.");
+            } else {
+                alert("Please fill in both fields.");
+            }
+        }
+        
+
+    function selectMood(category, mood) {
+        const scoreMap = { 'Very Unpleasant': 1, 'Unpleasant': 2, 'Neutral': 3, 'Pleasant': 4, 'Very Pleasant': 5 };
+        document.getElementById(`${category}ScoreInput`).value = scoreMap[mood];
+
+        if (category === 'emotional') {
+            document.getElementById('emotionalScore').style.display = 'none';
+            document.getElementById('cognitiveScore').style.display = 'block';
+        } else if (category === 'cognitive') {
+            document.getElementById('cognitiveScore').style.display = 'none';
+            document.getElementById('physicalScore').style.display = 'block';
+        } else if (category === 'physical') {
+            document.getElementById('physicalScore').style.display = 'none';
+            document.getElementById('moodMessage').style.display = 'block';
+            document.querySelector('.submit-btn').style.display = 'block';
+        }
+    }
+
+
 
 
         function analyzeMessage(message) {

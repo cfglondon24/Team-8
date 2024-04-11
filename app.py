@@ -20,18 +20,23 @@ def login():
         if mock_database[username] != password:
             return render_template('login.html', info="Invalid Password")
         else:  
-            # Check which button was pressed
-            if 'User In' in request.form:
-                return render_template("user_page.html", name=username)
-            elif 'Nurse Login' in request.form:
-                return render_template("nurse_page.html", name=username)
-            elif 'Volunteer Login' in request.form:
-                return render_template("volunteer_page.html", name=username)
-            
+            return render_template("main.html", name=username)
 
 @app.route('/')
 def home():
-    return render_template('v_main.html')
+    return render_template('main.html')
+
+@app.route('/submit_mood', methods=['POST'])
+def submit_mood():
+    emotional_score = request.form.get('emotionalScore')
+    cognitive_score = request.form.get('cognitiveScore')
+    physical_score = request.form.get('physicalScore')
+    mood_message = request.form.get('moodMessage')
+    
+    print(f"Emotional Score: {emotional_score}, Cognitive Score: {cognitive_score}, Physical Score: {physical_score}, Message: {mood_message}")
+
+    return render_template('dashboard.html')
+
 
 @app.route('/tracker', methods=['POST', 'GET'])
 def tracker():
@@ -51,10 +56,6 @@ def tracker():
 @app.before_request
 def login_handle():
     g.username = session.get('username')
-
-@app.route("/home", methods=["POST"])
-def home():
-    return render_template("dashboard.html")
 
 @app.route("/nurses", methods=["GET", "POST"])
 def nurses():
