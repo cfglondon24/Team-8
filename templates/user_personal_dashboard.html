@@ -126,6 +126,26 @@
   opacity: 1;
 }
 
+#contentContainer {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 20px;
+}
+
+.chart-container {
+  width:80%;
+  height: 60vh;
+  max-width: 2000px;
+  margin: 20px auto;
+}
+
+.dropdown {
+            text-align:center;
+            position: absolute;
+            bottom: 0px;
+            margin: auto;
+        }
+
     </style>
 </head>
 <body>
@@ -149,58 +169,208 @@
     </div>
 
 
-    <div id="container"></div>
+
+    <div id="contentContainer">
+      <div id="emotionalContent" style="display: none;" class="chart-container">
+        <script>
+          anychart.onDocumentReady(function () {
+            // add data
+            var data = [
+              ["Jan", 1],
+              ["Feb", 4],
+              ["Mar", 3],
+              ["Apr", 2],
+              ["May", 2],
+              ["Jun", 5],
+              ["Jul", 2],
+              ["Aug", 1],
+              ["Sep", 2],
+              ["Oct", 2],
+              ["Nov", 3],
+              ["Dec", 2]
+            ];
+
+            // create a data set
+            var dataSet = anychart.data.set(data);
+
+            // map the data for all series
+            var firstSeriesData = dataSet.mapAs({x: 0, value: 1});
+            var secondSeriesData = dataSet.mapAs({x: 0, value: 2});
+            var thirdSeriesData = dataSet.mapAs({x: 0, value: 3});
+
+            // create a line chart
+            var chart = anychart.line();
+            chart.yScale().minimum(0).maximum(6);
+
+            // create the series and name them
+            var firstSeries = chart.line(firstSeriesData);
+            firstSeries.name("Emotional Graph");
+            firstSeries.stroke({color:"#FF0000", thickness:4});
+
+            // add a legend
+            chart.legend().enabled(true);
+
+            // add a title
+            chart.title("Emotional Scores over Time");
+
+            // specify where to display the chart
+            chart.container("emotionalContent");
+
+            // draw the resulting chart
+            chart.draw();
+        });
+        </script>
+      </div>
+
+      <div id="physicalContent" style="display: none;" class="chart-container">
+        <script>
+          anychart.onDocumentReady(function () {
+            // add data
+            var data = [
+              ["Jan", 5],
+              ["Feb", 1],
+              ["Mar", 1],
+              ["Apr", 1],
+              ["May", 2],
+              ["Jun", 1],
+              ["Jul", 1],
+              ["Aug", 2],
+              ["Sep", 1],
+              ["Oct", 1],
+              ["Nov", 1],
+              ["Dec", 2]
+            ];
+
+            // create a data set
+            var dataSet = anychart.data.set(data);
+
+            // map the data for all series
+            var firstSeriesData = dataSet.mapAs({x: 0, value: 1});
+            var secondSeriesData = dataSet.mapAs({x: 0, value: 2});
+            var thirdSeriesData = dataSet.mapAs({x: 0, value: 3});
+
+            // create a line chart
+            var chart = anychart.line();
+            chart.yScale().minimum(0).maximum(6);
+            // create the series and name them
+            var firstSeries = chart.line(firstSeriesData);
+            firstSeries.name("Physical Graph");
+            firstSeries.stroke({color:"#FF0000", thickness:4});
+
+            // add a legend
+            chart.legend().enabled(true);
+
+            // add a title
+            chart.title("Physical Scores over Time");
+
+            // specify where to display the chart
+            chart.container("physicalContent");
+
+            // draw the resulting chart
+            chart.draw();
+        });
+        </script>
+      </div>
+
+      <div id="cognitiveContent" style="display: none;" class="chart-container">
+        <script>
+          anychart.onDocumentReady(function () {
+            // add data
+            var data = [
+              ["Jan", 5],
+              ["Feb", 4],
+              ["Mar", 5],
+              ["Apr", 5],
+              ["May", 5],
+              ["Jun", 5],
+              ["Jul", 4],
+              ["Aug", 4],
+              ["Sep", 5],
+              ["Oct", 5],
+              ["Nov", 5],
+              ["Dec", 5]
+            ];
+
+            // create a data set
+            var dataSet = anychart.data.set(data);
+
+            // map the data for all series
+            var firstSeriesData = dataSet.mapAs({x: 0, value: 1});
+            var secondSeriesData = dataSet.mapAs({x: 0, value: 2});
+            var thirdSeriesData = dataSet.mapAs({x: 0, value: 3});
+
+            // create a line chart
+            var chart = anychart.line();
+            chart.yScale().minimum(0).maximum(6);
+
+            // create the series and name them
+            var firstSeries = chart.line(firstSeriesData);
+            firstSeries.name("Cognitive Graph");
+            firstSeries.stroke({color:"#FF0000", thickness:4});
+
+            // add a legend
+            chart.legend().enabled(true);
+
+            // add a title
+            chart.title("Cognitive Scores over Time");
+
+            // specify where to display the chart
+            chart.container("cognitiveContent");
+
+            // draw the resulting chart
+            chart.draw();
+        });
+        </script>
+      </div>
+    </div>
+
     <script>
-      anychart.onDocumentReady(function () {
-  
-        // add data
-        var data = [
-          ["2010", 120],
-          ["2011", 80],
-          ["2012", 160],
-          ["2013", 140],
-          ["2014", 30],
-          ["2015", 100],
-          ["2016", 90],
-          ["2017", 80],
-          ["2018", 70],
-          ["2019", 30],
-          ["2020", 180],
-          ["2022", 170]
-        ];
-  
-        // create a data set
-        var dataSet = anychart.data.set(data);
+      function changeGraph() {
+          // Need to change to update teh data / show the data in grpah format
+          var dropdown = document.getElementById("dropdown");
+          var selectedValue = dropdown.value;
 
-        // map the data for all series
-        var firstSeriesData = dataSet.mapAs({x: 0, value: 1});
-        var secondSeriesData = dataSet.mapAs({x: 0, value: 2});
-        var thirdSeriesData = dataSet.mapAs({x: 0, value: 3});
+          document.getElementById("emotionalContent").style.display = "none";
+          document.getElementById("physicalContent").style.display = "none";
+          document.getElementById("cognitiveContent").style.display = "none";
 
-        // create a line chart
-        var chart = anychart.line();
+          if (selectedValue == "option1") {
+            document.getElementById("emotionalContent").style.display = "block";
+          } else if (selectedValue == "option2") {
+            document.getElementById("physicalContent").style.display = "block";
+          } else if (selectedValue == "option3") {
+            document.getElementById("cognitiveContent").style.display = "block";
+          }
 
-        // create the series and name them
-        var firstSeries = chart.line(firstSeriesData);
-        firstSeries.name("Heart Rate Data");
-
-
-        // add a legend
-        chart.legend().enabled(true);
-  
-        // add a title
-        chart.title("Average Heart Rate Per Year");
-  
-        // specify where to display the chart
-        chart.container("container");
-  
-        // draw the resulting chart
-        chart.draw();
-  
+        }
+      
+      document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("emotionalContent").style.display = "block";
       });
+
+      window.onclick = function(event) {
+          if (!event.target.matches('.dropbtn')) {
+              var dropdowns = document.getElementsByClassName("dropdown-content");
+              for (var elems = 0; elems < dropdowns.length; elems++) {
+                  var openDropdown = dropdowns[elems];
+                  if (openDropdown.classList.contains('show')) {
+                      openDropdown.classList.remove('show');
+                  }
+              }
+          }
+      }
     </script>
 
-
+    <div class="dropdown">
+      <select id="dropdown" onchange="changeGraph()">
+          <option value="option1">Emotional</option>
+          <option value="option2">Physical</option>
+          <option value="option3">Cognitive</option>
+      </select>
+      <div class="dropdown-content" id="graph_dropdown">
+        <a href="#"></a>
+      </div>
+    </div>
     
 </body>
 </html>
