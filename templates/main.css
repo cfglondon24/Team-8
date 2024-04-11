@@ -5,6 +5,7 @@ body, html {
     font-family: 'Poppins',sans-serif;
 }
 body {
+
     background-image: rl_for('static', filename='logo-words.jpeg');
     background-size: cover;
     background-position: center;
