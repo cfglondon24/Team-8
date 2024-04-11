@@ -38,22 +38,6 @@ def submit_mood():
 
     return render_template('user_personal_dashboard.html')
 
-@app.route('/tracker', methods=['POST', 'GET'])
-def tracker():
-    mood = request.form["mood"]
-    physical = request.form["physical"]
-    cognitive = request.form["cognitive"]
-    message = request.form["moodMessage"]
-    now = datetime.now()
-    dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-    name = session.get('username')
-    if mood < 4 or physical < 4 or cognitive < 4:
-        highList.append(name)
-    elif mood > 3 and mood < 5 or physical > 3 and physical < 5 or cognitive > 3 or cognitive < 5:
-        mediumList.append(name)
-        flash("A Nurse has been notified")
-    tracker[name] = f"Emotional score: {mood}, Physical Score: {physical}, Cognitive score: {cognitive}, Message: {message} date and time:{dt_string}"
-    return render_template("tracker.html")
 
 @app.before_request
 def login_handle():
