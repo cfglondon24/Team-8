@@ -36,8 +36,7 @@ def submit_mood():
     
     print(f"Emotional Score: {emotional_score}, Cognitive Score: {cognitive_score}, Physical Score: {physical_score}, Message: {mood_message}")
 
-    return render_template('dashboard.html')
-
+    return render_template('user_personal_dashboard.html')
 
 @app.route('/tracker', methods=['POST', 'GET'])
 def tracker():

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        #sequence {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        #inputSequence {
+            font-size: 1em;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        button, #scoreDisplay, #feedbackMessage {
+            padding: 10px 20px;
+            font-size: 1em;
+            margin-top: 10px;
+        }
+        #scoreDisplay, #feedbackMessage {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="sequence"></div>
+    <input type="text" id="inputSequence" placeholder="Enter sequence here" disabled>
+    <button id="startButton" onclick="startGame()">Start Game</button>
+    <div id="scoreDisplay">Score: 0</div>
+    <p id="feedbackMessage"></p> <!-- Feedback message element -->
+
+    <script>
+        let currentLevel = 3;
+        let currentSequence = [];
+        let startTime;
+        let gameInProgress = false;
+
+        const inputSequenceElement = document.getElementById('inputSequence');
+        const sequenceElement = document.getElementById('sequence');
+        const startButton = document.getElementById('startButton');
+        const scoreDisplay = document.getElementById('scoreDisplay');
+        const feedbackMessage = document.getElementById('feedbackMessage'); 
+
+        function generateSequence(level) {
+            return Array.from({length: level}, () => Math.floor(Math.random() * 10));
+        }
+
+        function displaySequence(sequence) {
+            sequenceElement.innerText = sequence.join(' ');
+            setTimeout(() => {
+                sequenceElement.innerText = '';
+                inputSequenceElement.disabled = false;
+                inputSequenceElement.focus();
+            }, 1000 + 500 * sequence.length);
+        }
+
+        function checkSequence(userInput) {
+            return JSON.stringify(userInput) === JSON.stringify(currentSequence);
+        }
+
+        function resetInputField() {
+            inputSequenceElement.value = '';
+            inputSequenceElement.disabled = true;
+        }
+
+        function updateScoreDisplay() {
+            const totalTime = ((Date.now() - startTime) / 1000).toFixed(2);
+            scoreDisplay.innerText = `Score: ${currentLevel - 1}`;
+        }
+
+        function handleUserInput() {
+            const userInput = inputSequenceElement.value.split('').map(Number);
+            if (checkSequence(userInput)) {
+                feedbackMessage.innerText = 'Correct! Moving to the next level.';
+                currentLevel++;
+                resetInputField();
+                updateScoreDisplay();
+                nextLevel();
+            } else {
+                updateScoreDisplay(); 
+                feedbackMessage.innerText = `Incorrect sequence. Final Score: ${currentLevel - 1}.`;
+                resetInputField();
+                gameInProgress = false; 
+                startButton.innerText = "Restart Game";
+                startButton.style.display = 'block';
+            }
+        }
+
+        function nextLevel() {
+            if (!gameInProgress) return;
+            currentSequence = generateSequence(currentLevel);
+            displaySequence(currentSequence);
+        }
+
+        function startGame() {
+            currentLevel = 3; 
+            gameInProgress = true;
+            startTime = Date.now(); 
+            scoreDisplay.style.display = 'block';
+            feedbackMessage.style.display = 'block'; 
+            feedbackMessage.innerText = ''; 
+            updateScoreDisplay(); 
+            startButton.style.display = 'none'; 
+            nextLevel();
+        }
+
+        inputSequenceElement.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !this.disabled && gameInProgress) {
+                handleUserInput();
+            }
+        });
+    </script>
+</body>
+</html>
