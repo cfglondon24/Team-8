@@ -233,6 +233,7 @@
             <a href="#">Fundraise</a>
             <a href="#">Donate</a>
             <a href="#">Shop</a>
+            <a href="#">Tracker</a>
             <a href="/login">Login</a>
         </div>
     </div>
@@ -349,10 +350,10 @@
 
         function analyzeMessage(message) {
             // We want to go through the message and look for certain keywords and recommend either pages or phone numbers based on this response
-            var distressList = ["urgently", "scared"];
+            var distressList = ["urgently", "scared", "depressed"];
             var aboutList = ["learn", "educate", "about"];
-            var aboutPageURL = "about.html";
-
+            var legalList = ["legal", "work", "office", "boss"]
+            var aboutPageURL = "about.html"; 
 
             for (var i = 0; i < distressList.length; i++) {
                 if (message.includes(distressList[i])) {
@@ -366,7 +367,14 @@
                     return messageWithLink;
                 }
             }
-            return "This is a generic response from our chat bot";
+
+            for (var i = 0; i < legalList.length; i++) {
+                if (message.includes(legalList[i])) {
+                    return "We feel like you will be better suited to speak to someone on the phone. Please contact anyone of our legal partners: Anthony Collins (0121 212 7476), Enable Law (0800 044 8488), irwinmitchell (08000 23 22 33), fletchers group (01704 503126)"
+                }
+            }
+
+            return "This is a generic response from our chat bot for further support please contact us on: 08003896255";
         }
 
 
