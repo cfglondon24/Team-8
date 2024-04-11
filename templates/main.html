@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Full Page Image</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
     <style>
         body, html {
             margin: 0;
@@ -12,7 +12,7 @@
             height: 100%;
         }
         body {
-            background-image: url("image_two.jpeg");
+            background-image :url_for('static', filename='logo-words.jpeg');
             background-size: cover;
             background-position: center;
         }
@@ -221,7 +221,7 @@
     <div class="menu-bar">
         <div class="menu-left">
             <div class="logo"> <!-- Logo box -->
-                <img src="image_one.jpeg" alt="Logo" height="40px"> 
+                <img src="{{ url_for('static', filename='logo-words.jpeg') }}" alt="Logo" height="40px"> 
             </div>
         </div>
         <div class="menu-right">

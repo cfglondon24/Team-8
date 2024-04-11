@@ -15,6 +15,7 @@ mediumList = []
 def login():
     username = request.form['username']
     password = request.form['password']
+
     if username not in mock_database:
         return render_template('login.html', info="Invalid user")
     else:
