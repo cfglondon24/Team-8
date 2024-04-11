@@ -36,13 +36,7 @@ def submit_mood():
     mood_message = request.form.get('moodMessage')
     now = datetime.now()
     dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-    name = session.get('username')
-    if int(emotional_score) < 4 or int(physical_score) < 4 or int(cognitive_score) < 4:
-        highList.append(name)
-    elif int(emotional_score) > 3 and int(emotional_score) < 5 or int(physical_score) > 3 and int(physical_score) < 5 or int(cognitive_score) > 3 or int(cognitive_score) < 5:
-        mediumList.append(name)
-        flash("A Nurse has been notified")
-    
+    name = session.get('username')    
     print(f"Emotional Score: {emotional_score}, Cognitive Score: {cognitive_score}, Physical Score: {physical_score}, Message: {mood_message}")
 
     return render_template('user_personal_dashboard.html')
