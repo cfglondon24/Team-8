@@ -32,23 +32,6 @@ body{
     position: absolute;
     border-radius: 50%;
 }
-.shape:first-child{
-    background: linear-gradient(
-        #1845ad,
-        #23a2f6
-    );
-    left: -80px;
-    top: -80px;
-}
-.shape:last-child{
-    background: linear-gradient(
-        to right,
-        #ff512f,
-        #f09819
-    );
-    right: -30px;
-    bottom: -80px;
-}
 form{
     height: 520px;
     width: 400px;
@@ -61,7 +44,7 @@ form{
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255,255,255,0.1);
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
-    padding: 50px 35px;
+    padding: 20px 35px;
 }
 form *{
     font-family: 'Poppins',sans-serif;
@@ -98,12 +81,12 @@ input{
     color: #e5e5e5;
 }
 button{
-    margin-top: 50px;
+    margin-top: 20px;
     width: 100%;
     background-color: #ffffff;
     color: #080710;
-    padding: 15px 0;
-    font-size: 18px;
+    padding: 10px 0;
+    font-size: 15px;
     font-weight: 600;
     border-radius: 5px;
     cursor: pointer;
@@ -132,9 +115,14 @@ button{
         <input type="text" placeholder="Email or Phone" name="username">
         <label for="password">Password</label>
         <input type="password" placeholder="Password" name="password">
-
-        <button>Log In</button>
+ 
+        <button type="submit" name="user_button" value="User In">User In</button>
+        <button type="submit" name="nurse_button" value="Nurse Login">Nurse Login</button>
+        <button type="submit" name="volunteer_button" value="Volunteer Login">Volunteer Login</button>
     </form>
+
+
+
 
 </body>
 </html>

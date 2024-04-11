@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 100%}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+        
+    /* On small screens, set height to 'auto' for the grid */
+    @media screen and (max-width: 100%) {
+      .row.content {height: auto;} 
+    }
+
+
+    .flagged-table {
+    border-collapse: collapse;
+    width:80%;
+    margin: 2rem 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 500px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.flagged-table {
+    padding: 3px;
+    margin: 3px;
+  }
+
+
+.flagged-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+
+    .menu-bar {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .menu-left {
+            display: flex;
+            align-items: center;
+        }
+        .menu-right {
+            display: flex;
+            align-items: center;
+        }
+        .logo {
+            margin-right: auto; /* Pushes logo box to the left */
+        }
+        .menu-bar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .menu-bar a:hover {
+            background-color: #555;
+        }
+
+
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width textarea */
+.form-container textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 200px;
+}
+
+.center_please {
+    display: flex;
+    justify-content: center;
+}
+
+/* When the textarea gets focus, do something */
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/send button */
+.form-container .btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+
+.full-page-image {
+        position: absolute;
+        top: 40%;
+        left: 30%;
+        transform: translate(-30%, -40%);
+        padding: 20px;
+        width: 300px;
+        background-color: rgba(0, 0, 0, 0.5); /* Adjust background opacity here */
+        color: white; /* Text color */
+    }
+
+  </style>
+</head>
+<body>
+
+    <div class="menu-bar">
+        <div class="menu-left">
+            <div class="logo"> <!-- Logo box -->
+                <img src="image_one.jpeg" alt="Logo" height="40px"> 
+            </div>
+        </div>
+        <div class="menu-right">
+            <a href="/home">Home</a>
+            <a href="#">About</a>
+            <a href="#">Support</a>
+            <a href="#">Professsional Resources</a>
+            <a href="#">Volunteer</a>
+            <a href="#">Fundraise</a>
+            <a href="#">Donate</a>
+            <a href="#">Shop</a>
+            <a href="/login">Login</a>
+        </div>
+    </div>
+
+
+    <div class="center_please">
+    
+    <div class="col-sm-9">
+      <div class="well">
+        <h4>Aryan's Dashboard</h4>
+      </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="well">
+            <h4>Upcomming </h4>
+            <p>5</p> 
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="well">
+            <h4>Sessions Attended</h4>
+            <p>30</p> 
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="well">
+            <h4>Sessions</h4>
+            <p>10 Million</p> 
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="well">
+            <h4>Bounce</h4>
+            <p>30%</p> 
+          </div>
+        </div>
+      </div>
+    </div>
+      
+
+    </div>
+
+
+
+
+    <div class="center_please">
+        <table class="flagged-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Average Mood</th>
+                    <th>Cognitive</th>
+                    <th>Physical</th>
+                    <th>Risk</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Jane Doe</td>
+                    <td>2.3</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>High</td>
+                    <td>12/08/2004</td>
+                    <td>12:03</td>
+                </tr>
+
+                <tr>
+                    <td>Jane Doe</td>
+                    <td>2.3</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>High</td>
+                    <td>12/08/2004</td>
+                    <td>12:03</td>
+                </tr>
+
+                <tr>
+                    <td>Jane Doe</td>
+                    <td>2.3</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>High</td>
+                    <td>12/08/2004</td>
+                    <td>12:03</td>
+                </tr>
+
+                <tr>
+                    <td>Jane Doe</td>
+                    <td>2.3</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>High</td>
+                    <td>12/08/2004</td>
+                    <td>12:03</td>
+                </tr>
+
+                <tr>
+                    <td>Jane Doe</td>
+                    <td>2.3</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>High</td>
+                    <td>12/08/2004</td>
+                    <td>12:03</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    
+
+</body>
+</html>
