@@ -1,8 +1,18 @@
 <html>
 <head>
+  <link href='https://unpkg.com/css.gg@2.0.0/icons/css/profile.css' rel='stylesheet'>
 <style>
 
-
+body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        body {
+            background-image :url_for('static', filename='logo-words.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
 .menu-bar {
             background-color: #eb2a27;
             color: white;
@@ -29,9 +39,10 @@
             margin: 0 10px;
             border-radius: 5px;
             transition: background-color 0.3s ease;
+            font-family: Arial, Helvetica, sans-serif;
         }
         .menu-bar a:hover {
-            background-color: #ff6a00;
+            background-color: #555;
         }
 
 .search-container {
@@ -123,6 +134,11 @@
     display: none;
 }
 
+.container{
+  max-height:10%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 #test {
     padding: 10px;
 }
@@ -156,7 +172,7 @@
         <div class="menu-left">
             <div class="logo"> <!-- Logo box -->
 
-                <img src="{{ url_for('static', filename='UKST-logo.jpeg') }}" alt="Logo" height="40px"> 
+                <img src="{{ url_for('static', filename='logo-words.jpeg') }}" alt="Logo" height="40px"> 
 
 
             </div>
@@ -182,25 +198,25 @@
 
 
     <div class="container">
-        <img src="/w3images/bandmember.jpg" alt="Avatar">
+      <i class="gg-profile"></i>
         <p>Do you guys known where to find information on sepsis?</p>
         <span class="time-right">11:00</span>
       </div>
       
       <div class="container darker">
-        <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="right">
+        <i class="gg-profile"></i>
         <p>Yeah! Sepsis UK has some great resources!</p>
         <span class="time-left">11:01</span>
       </div>
       
       <div class="container">
-        <img src="/w3images/bandmember.jpg" alt="Avatar">
+        <i class="gg-profile"></i>
         <p>In fact, a team of new developers have developed an even cooler tool!</p>
         <span class="time-right">11:02</span>
       </div>
       
       <div class="container darker">
-        <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="right">
+        <i class="gg-profile"></i>
         <p>Omg wow that is so cool!</p>
         <span class="time-left">11:05</span>
       </div>

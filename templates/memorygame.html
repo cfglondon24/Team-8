@@ -43,12 +43,24 @@
         #scoreDisplay, #feedbackMessage {
             display: none;
         }
-        .menu-left, .menu-right {
+        .menu-bar {
+            background-color: #eb2a27;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .menu-left {
+            display: flex;
+            align-items: center;
+        }
+        .menu-right {
             display: flex;
             align-items: center;
         }
         .logo {
-            margin-right: auto;
+            margin-right: auto; /* Pushes logo box to the left */
         }
         .menu-bar a {
             color: white;
@@ -59,7 +71,7 @@
             transition: background-color 0.3s ease;
         }
         .menu-bar a:hover {
-            background-color: #ff6a00;
+            background-color: #555;
         }
 
         
@@ -69,7 +81,7 @@
     <div class="menu-bar">
         <div class="menu-left">
             <div class="logo">
-                <img src="{{ url_for('static', filename='UKST-logo.jpeg') }}" alt="Logo" height="40"> 
+                <img src="{{ url_for('static', filename='logo-words.jpeg') }}" alt="Logo" height="40"> 
             </div>
         </div>
         <div class="menu-right">
@@ -112,7 +124,7 @@
                 sequenceElement.innerText = '';
                 inputSequenceElement.disabled = false;
                 inputSequenceElement.focus();
-            }, 1000 + 500 * sequence.length);
+            }, 300 + 300 * sequence.length);
         }
 
         function checkSequence(userInput) {
