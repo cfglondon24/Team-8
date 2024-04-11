@@ -1,0 +1,254 @@
+<html>
+<head>
+<style>
+
+
+.menu-bar {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .menu-left {
+            display: flex;
+            align-items: center;
+        }
+        .menu-right {
+            display: flex;
+            align-items: center;
+        }
+        .logo {
+            margin-right: auto; /* Pushes logo box to the left */
+        }
+        .menu-bar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .menu-bar a:hover {
+            background-color: #555;
+        }
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
+  .search-bar {
+    display: flex;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  .search-input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+  }
+  .search-button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+  }
+  .search-button:hover {
+    background-color: #45a049;
+  }
+
+/* Chat containers */
+.container {
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+/* Darker chat container */
+.darker {
+  border-color: #ccc;
+  background-color: #ddd;
+}
+
+/* Clear floats */
+.container::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Style images */
+.container img {
+  float: left;
+  max-width: 60px;
+  width: 100%;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+/* Style the right image */
+.container img.right {
+  float: right;
+  margin-left: 20px;
+  margin-right:0;
+}
+
+/* Style time text */
+.time-right {
+  float: right;
+  color: #aaa;
+}
+
+/* Style time text */
+.time-left {
+  float: left;
+  color: #999;
+}
+
+.center {
+    margin: auto;
+    width: 60%;
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.hideform {
+    display: none;
+}
+
+#test {
+    padding: 10px;
+}
+
+#show-container {
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    width: 100vw; /* Set width to 100% of viewport width */
+  }
+  #show {
+    padding: 10px 20px;
+    border: 2px solid #ccc;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%; /* Set width to 100% to fill the container */
+    text-align: left; /* Align text to the left within the button */
+  }
+
+</style>
+</head>
+<body>
+
+
+
+
+    <div class="menu-bar">
+        <div class="menu-left">
+            <div class="logo"> <!-- Logo box -->
+                <img src="{{ url_for('static', filename='UKST-logo.jpeg') }}" alt="Logo" height="40px"> 
+            </div>
+        </div>
+        <div class="menu-right">
+            <a href="/home">Home</a>
+            <a href="#">About</a>
+            <a href="#">Support</a>
+            <a href="#">Professsional Resources</a>
+            <a href="#">Volunteer</a>
+            <a href="#">Fundraise</a>
+            <a href="#">Donate</a>
+            <a href="#">Shop</a>
+            <a href="/login">Login</a>
+        </div>
+    </div>
+
+    <h1> Forums </h1>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<div class="center hideform">
+    <button id="close" style="float: right;">X</button>
+
+
+    <div class="container">
+        <img src="/w3images/bandmember.jpg" alt="Avatar">
+        <p>Do you guys known where to find information on sepsis?</p>
+        <span class="time-right">11:00</span>
+      </div>
+      
+      <div class="container darker">
+        <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="right">
+        <p>Yeah! Sepsis UK has some great resources!</p>
+        <span class="time-left">11:01</span>
+      </div>
+      
+      <div class="container">
+        <img src="/w3images/bandmember.jpg" alt="Avatar">
+        <p>In fact, a team of new developers have developed an even cooler tool!</p>
+        <span class="time-right">11:02</span>
+      </div>
+      
+      <div class="container darker">
+        <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="right">
+        <p>Omg wow that is so cool!</p>
+        <span class="time-left">11:05</span>
+      </div>
+
+
+      <div class="search-container">
+        <div class="search-bar">
+          <input class="search-input" type="text" name="q" placeholder="Message">
+          <button class="search-button" type="submit">Search</button>
+        </div>
+      </div>
+</div>
+
+
+<div id="test">
+    <button id="show">Family</button>
+</div>
+
+<div id="test">
+    <button id="show">Finances</button>
+</div>
+
+<div id="test">
+    <button id="show">Social</button>
+</div>
+
+<div id="test">
+    <button id="show">Issues</button>
+</div>
+
+
+<div id="test">
+    <button id="show">Miscellaneous</button>
+</div>
+
+
+
+
+
+<script>
+$('#show').on('click', function () {
+    $('.center').show();
+    $(this).hide();
+})
+
+$('#close').on('click', function () {
+    $('.center').hide();
+    $('#show').show();
+})
+</script>
+</body>
+</html>

@@ -26,7 +26,7 @@ def login():
 
 @app.route('/')
 def home():
-    return render_template('main.html')
+    return render_template('login.html')
 
 @app.route('/submit_mood', methods=['POST'])
 def submit_mood():
@@ -34,9 +34,7 @@ def submit_mood():
     cognitive_score = request.form.get('cognitiveScore')
     physical_score = request.form.get('physicalScore')
     mood_message = request.form.get('moodMessage')
-    now = datetime.now()
-    dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-    name = session.get('username')    
+    
     print(f"Emotional Score: {emotional_score}, Cognitive Score: {cognitive_score}, Physical Score: {physical_score}, Message: {mood_message}")
 
     return render_template('user_personal_dashboard.html')
@@ -48,11 +46,13 @@ def login_handle():
 
 @app.route("/nurses", methods=["GET", "POST"])
 def nurses():
-    return render_template("nurse_main.html")
+    return render_template("nurse-dashboard.html")
 
 @app.route("/cognitive_game", methods=["GET", "POST"])
 def game():
     return render_template("memorygame.html")
+
+
         
 
 if __name__ == '__main__':
