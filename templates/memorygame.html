@@ -7,10 +7,23 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            margin: 0; /* Ensure no default margin is applied */
+            padding: 0; /* Ensure no default padding is applied */
+            height: 100vh; /* Full height */
+            display: flex;
+            flex-direction: column; /* Stack children vertically */
+        }
+        .menu-bar {
+            background-color: #eb2a27;
+            color: white;
+            padding: 10px;
+            width: 100%; /* Full width */
+        }
+        .content {
+            flex-grow: 1; /* Allows this section to fill available space */
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
             flex-direction: column;
         }
         #sequence {
@@ -30,15 +43,50 @@
         #scoreDisplay, #feedbackMessage {
             display: none;
         }
+        .menu-left, .menu-right {
+            display: flex;
+            align-items: center;
+        }
+        .logo {
+            margin-right: auto;
+        }
+        .menu-bar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .menu-bar a:hover {
+            background-color: #ff6a00;
+        }
+
+        
     </style>
 </head>
 <body>
-    
-    <div id="sequence"></div>
-    <input type="text" id="inputSequence" placeholder="Enter sequence here" disabled>
-    <button id="startButton" onclick="startGame()">Start Game</button>
-    <div id="scoreDisplay">Score: 0</div>
-    <p id="feedbackMessage"></p> <!-- Feedback message element -->
+    <div class="menu-bar">
+        <div class="menu-left">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='UKST-logo.jpeg') }}" alt="Logo" height="40"> 
+            </div>
+        </div>
+        <div class="menu-right">
+            <a href="/">Home</a>
+            <a href="/forum">Forum</a>
+            <a href="/cognitive_game">Game</a>
+            <a href="/friends">Friends</a>
+            <a href="/profile">Profile</a>
+        </div>
+    </div>
+    <div class="content">
+        <div id="sequence"></div>
+        <input type="text" id="inputSequence" placeholder="Enter sequence here" disabled>
+        <button id="startButton" onclick="startGame()">Start Game</button>
+        <div id="scoreDisplay">Score: 0</div>
+        <p id="feedbackMessage"></p>
+    </div>
 
     <script>
         let currentLevel = 3;
