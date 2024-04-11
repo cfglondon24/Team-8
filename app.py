@@ -22,6 +22,10 @@ def login():
         else:  
             return render_template("main.html", name=username)
 
+@app.route('/')
+def home():
+    return render_template('v_main.html')
+
 @app.route('/submit_mood', methods=['POST'])
 def submit_mood():
     emotional_score = request.form.get('emotionalScore')
@@ -33,10 +37,6 @@ def submit_mood():
 
     return render_template('dashboard.html')
 
-
-@app.route('/')
-def home():
-    return render_template('login.html')
 
 @app.route('/tracker', methods=['POST', 'GET'])
 def tracker():
