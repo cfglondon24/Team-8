@@ -15,6 +15,7 @@ mediumList = []
 def login():
     username = request.form['username']
     password = request.form['password']
+
     if username not in mock_database:
         return render_template('login.html', info="Invalid user")
     else:
@@ -45,11 +46,13 @@ def login_handle():
 
 @app.route("/nurses", methods=["GET", "POST"])
 def nurses():
-    return render_template("nurses.html")
+    return render_template("nurse-dashboard.html")
 
 @app.route("/cognitive_game", methods=["GET", "POST"])
 def game():
-    return render_template("game.html")
+    return render_template("memorygame.html")
+
+
         
 
 if __name__ == '__main__':
