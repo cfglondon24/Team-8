@@ -13,3 +13,12 @@ on windows: `source venv/Scripts/activate`
 `pip3 install -r requirements.txt`
 
 4. Run `python app.py`
+
+### For devs
+
+1. Create a branch for your feature
+`git branch -b {name of feature}`
+
+2. work on feature etc
+
+3. create pr
