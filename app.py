@@ -7,7 +7,8 @@ app = Flask(__name__)
 # Temp mock database 
 mock_database = {'aryan': '1234', 'jack': '2345'}
 tracker_info = {}
-flaggedList = []
+highList = []
+mediumList = []
 
 
 @app.route('/form_login', methods=['POST', 'GET'])
@@ -47,10 +48,12 @@ def tracker():
     now = datetime.now()
     dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
     name = session.get('username')
-    if mood < 5 or physical < 5 or cognitive < 5:
-        flaggedList.append(name)
+    if mood < 4 or physical < 4 or cognitive < 4:
+        highList.append(name)
+    elif mood > 3 and mood < 5 or physical > 3 and physical < 5 or cognitive > 3 or cognitive < 5:
+        mediumList.append(name)
         flash("A Nurse has been notified")
-    tracker[name] = f"mood: {mood}, physical: {physical}, cognitive: {cognitive}, Message: {message} date and time:{dt_string}"
+    tracker[name] = f"Emotional score: {mood}, Physical Score: {physical}, Cognitive score: {cognitive}, Message: {message} date and time:{dt_string}"
     return render_template("tracker.html")
 
 @app.before_request
