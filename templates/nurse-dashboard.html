@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nurse Style</title>
+    <link rel="stylesheet" href="nurse-dashboard-style.css">
+    <script type="text/javascript" src="nurse-dashboard-script.js"></script>
+</head>
+<body>
+    <h1>Nurse Dashboard</h1>
+
+    <h2>Schedule: 11th April</h2>
+    <table class="">
+        <thead>
+            <tr>
+                <th>Patient Name</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Jane</td>
+                <td><button>User Profile</button></td>
+                <td><button>Remove</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <h2>Flagged Users</h2>
+        <table id="flagged-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Emotional</th>
+                    <th>Physical</th>
+                    <th>Cognitive</th>
+                    <th>Risk</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="entries">
+                <tr id='entry-1'>
+                    <td>Jane Doe</td>
+                    <td>2.3</td>
+                    <td>5</td>
+                    <td>1</td>
+                    <td>High</td>
+                    <td><a href="#">
+                        <button>User Profile</button>
+                    </a></td>
+                    <td><a href="#">
+                        <button>Add To Schedule</button>
+                    </a></td>
+                </tr>
+            </tbody>
+        </table>
+</body>
+</html>

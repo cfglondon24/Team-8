@@ -1,0 +1,30 @@
+*{
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    display:grid;
+    justify-items: center;
+}
+
+#flagged-table {
+    border-collapse: collapse;
+    width:80%;
+    margin: 2rem 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 500px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+#flagged-table * {
+    padding: 3px;
+    margin: 3px;
+  }
+  
+
+#flagged-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
