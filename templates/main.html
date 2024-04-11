@@ -3,10 +3,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Web Page</title>
+    <title>Full Page Image</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        body {
+            background-image: url("image_two.jpeg");
+            background-size: cover;
+            background-position: center;
+        }
+        .menu-bar {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .menu-left {
+            display: flex;
+            align-items: center;
+        }
+        .menu-right {
+            display: flex;
+            align-items: center;
+        }
+        .logo {
+            margin-right: auto; /* Pushes logo box to the left */
+        }
+        .menu-bar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .menu-bar a:hover {
+            background-color: #555;
+        }
+
+/* Button used to open the chat form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup chat - hidden by default */
+.chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width textarea */
+.form-container textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 200px;
+}
+
+/* When the textarea gets focus, do something */
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/send button */
+.form-container .btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+
+.full-page-image {
+        position: absolute;
+        top: 40%;
+        left: 30%;
+        transform: translate(-30%, -40%);
+        padding: 20px;
+        width: 300px;
+        background-color: rgba(0, 0, 0, 0.5); /* Adjust background opacity here */
+        color: white; /* Text color */
+    }
+
+    </style>
 </head>
 <body>
-    <h1>Hello, World!</h1>
+    <div class="menu-bar">
+        <div class="menu-left">
+            <div class="logo"> <!-- Logo box -->
+                <img src="image_one.jpeg" alt="Logo" height="40px"> 
+            </div>
+        </div>
+        <div class="menu-right">
+            <a href="/home">Home</a>
+            <a href="#">About</a>
+            <a href="#">Support</a>
+            <a href="#">Professsional Resources</a>
+            <a href="#">Volunteer</a>
+            <a href="#">Fundraise</a>
+            <a href="#">Donate</a>
+            <a href="#">Shop</a>
+            <a href="/login">Login</a>
+        </div>
+    </div>
+
+
+    <div class="full-page-image">
+        <div class="overlay">
+            <div class="content">
+                <h1>Our nurses support 100s of people every day</h1>
+                <button>Get Support</button>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+    <button class="open-button" onclick="openChat()">Open Chat</button>
+    
+    
+    <div id="chatPopup" class="chat-popup">
+        <div class="form-container">
+            <div id="chatMessages" class="chat-messages"></div>
+            <textarea id="messageInput" placeholder="Type your message..."></textarea>
+            <button class="btn" onclick="sendMessage()">Send</button>
+            <button class="btn cancel" onclick="closeChat()">Close</button>
+        </div>
+    </div>
+
+
+    <script>
+        function openChat() {
+            document.getElementById("chatPopup").style.display = "block";
+        }
+
+        function closeChat() {
+            document.getElementById("chatPopup").style.display = "none";
+        }
+
+        function sendMessage() {
+            var message = document.getElementById("messageInput").value;
+            if (message.trim() !== "") {
+                displayMessage(message, "user");
+                // Simulate a response from the chat bot
+                setTimeout(function() {
+                    displayMessage(analyzeMessage(message), "bot");
+                }, 1000);
+                document.getElementById("messageInput").value = "";
+            }
+        }
+
+
+        function analyzeMessage(message) {
+            // We want to go through the message and look for certain keywords and recommend either pages or phone numbers based on this response
+            var distressList = ["urgently", "scared"];
+            var aboutList = ["learn", "educate", "about"];
+            var aboutPageURL = "about.html";
+
+
+            for (var i = 0; i < distressList.length; i++) {
+                if (message.includes(distressList[i])) {
+                    return "We feel like you will be better suited to speak to someone on the phone. Please call 0800 389 6255."
+                }
+            }
+
+            for (var i = 0; i < aboutList.length; i++) {
+                if (message.includes(aboutList[i])) {
+                    var messageWithLink = "You seem to want to learn more about our charity, please visit our about page to learn more";
+                    return messageWithLink;
+                }
+            }
+            return "This is a generic response from our chat bot";
+        }
+
+
+        function displayMessage(message, sender) {
+            var chatMessages = document.getElementById("chatMessages");
+            var messageElement = document.createElement("div");
+            messageElement.classList.add("message");
+            messageElement.classList.add(sender);
+            messageElement.innerText = message;
+            chatMessages.appendChild(messageElement);
+        }
+    </script>
+
     
 </body>
 </html>
