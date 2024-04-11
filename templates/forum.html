@@ -155,7 +155,11 @@
     <div class="menu-bar">
         <div class="menu-left">
             <div class="logo"> <!-- Logo box -->
-                <img src="image_one.jpeg" alt="Logo" height="40px"> 
+
+                <img src="{{ url_for('static', filename='UKST-logo.jpeg') }}" alt="Logo" height="40px"> 
+
+
+
             </div>
         </div>
         <div class="menu-right">
@@ -164,9 +168,6 @@
             <a href="#">Support</a>
             <a href="#">Professsional Resources</a>
             <a href="#">Volunteer</a>
-            <a href="#">Fundraise</a>
-            <a href="#">Donate</a>
-            <a href="#">Shop</a>
             <a href="/login">Login</a>
         </div>
     </div>
