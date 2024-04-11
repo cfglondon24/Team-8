@@ -15,18 +15,20 @@ mediumList = []
 def login():
     username = request.form['username']
     password = request.form['password']
-
-    if username not in mock_database:
-        return render_template('login.html', info="Invalid user")
+    if (username == "aryan"):
+        return render_template("main.html", name=username)
+    elif (username == "jack"):
+        return render_template("nurse-dashboard.html", name=username)
+    elif (username == "v"):
+        return render_template("v_main.html", name=username)
     else:
-        if mock_database[username] != password:
-            return render_template('login.html', info="Invalid Password")
-        else:  
-            return render_template("main.html", name=username)
+        return render_template('login.html', info="Invalid Username")
+
+
 
 @app.route('/')
 def home():
-    return render_template('main.html', name=session.get('username'))
+    return render_template('login.html', name=session.get('username'))
 
 
 @app.route('/submit_mood', methods=['POST'])
@@ -41,6 +43,7 @@ def submit_mood():
     return render_template('user_personal_dashboard.html')
 
 
+
 @app.before_request
 def login_handle():
     g.username = session.get('username')
@@ -48,6 +51,10 @@ def login_handle():
 @app.route("/nurses", methods=["GET", "POST"])
 def nurses():
     return render_template("nurse-dashboard.html")
+
+@app.route('/diary',  methods=["GET", "POST"])
+def diary_test():
+    return render_template("diary.html")
 
 @app.route("/cognitive_game", methods=["GET", "POST"])
 def game():
