@@ -5,6 +5,44 @@
 body{
     display:grid;
     justify-items: center;
+    background-color: bisque;
+}
+
+th{
+ min-height: 10%;
+}
+
+
+.menu-bar {
+    background-color: white;
+    color: black;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width:100%;
+}
+.menu-left {
+    display: flex;
+    align-items: center;
+}
+.menu-right {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    margin-right: auto; /* Pushes logo box to the left */
+}
+.menu-bar a {
+    text-decoration: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+.menu-bar a:hover {
+    background-color: lightgray;
 }
 
 #flagged-table {
@@ -24,7 +62,37 @@ body{
   
 
 #flagged-table thead tr {
-    background-color: #009879;
+    background-color: #f96411;
     color: #ffffff;
     text-align: left;
+}
+
+button {
+  background: #FF4742;
+  border: 1px solid #FF4742;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 16px;
+  min-height: 10%;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+
+}
+
+.button:hover,
+.button:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #FF4742;
+}
+
+.button:active {
+  opacity: .5;
 }
