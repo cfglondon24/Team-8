@@ -26,7 +26,8 @@ def login():
 
 @app.route('/')
 def home():
-    return render_template('login.html')
+    return render_template('main.html', name=session.get('username'))
+
 
 @app.route('/submit_mood', methods=['POST'])
 def submit_mood():
@@ -52,8 +53,17 @@ def nurses():
 def game():
     return render_template("memorygame.html")
 
-
+@app.route("/forum", methods=["GET", "POST"])
+def forum():
+    return render_template("forum.html")
         
+@app.route("/friends", methods=["GET", "POST"])
+def friends():
+    return render_template("friends.html")
+
+@app.route("/profile", methods=["GET", "POST"])
+def profile():
+    return render_template("user_personal_dashboard.html")
 
 if __name__ == '__main__':
     app.run(debug=True)

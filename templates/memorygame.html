@@ -33,6 +33,7 @@
     </style>
 </head>
 <body>
+    
     <div id="sequence"></div>
     <input type="text" id="inputSequence" placeholder="Enter sequence here" disabled>
     <button id="startButton" onclick="startGame()">Start Game</button>
@@ -75,7 +76,7 @@
 
         function updateScoreDisplay() {
             const totalTime = ((Date.now() - startTime) / 1000).toFixed(2);
-            scoreDisplay.innerText = `Score: ${currentLevel - 1}`;
+            scoreDisplay.innerText = `Score: ${currentLevel - 3}`;
         }
 
         function handleUserInput() {
@@ -88,7 +89,7 @@
                 nextLevel();
             } else {
                 updateScoreDisplay(); 
-                feedbackMessage.innerText = `Incorrect sequence. Final Score: ${currentLevel - 1}.`;
+                feedbackMessage.innerText = `Incorrect sequence. Final Score: ${currentLevel - 3}.`;
                 resetInputField();
                 gameInProgress = false; 
                 startButton.innerText = "Restart Game";
