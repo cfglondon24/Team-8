@@ -19,6 +19,18 @@ def login():
         else:  
             return render_template("main.html", name=username)
 
+@app.route('/submit_mood', methods=['POST'])
+def submit_mood():
+    emotional_score = request.form.get('emotionalScore')
+    cognitive_score = request.form.get('cognitiveScore')
+    physical_score = request.form.get('physicalScore')
+    mood_message = request.form.get('moodMessage')
+    
+    print(f"Emotional Score: {emotional_score}, Cognitive Score: {cognitive_score}, Physical Score: {physical_score}, Message: {mood_message}")
+    
+
+    return render_template('dashboard.html')
+
 
 @app.route('/')
 def home():
