@@ -28,7 +28,7 @@ def login():
 
 @app.route('/')
 def home():
-    return render_template('education.html', name=session.get('username'))
+    return render_template('login.html', name=session.get('username'))
 
 
 @app.route('/submit_mood', methods=['POST'])
@@ -71,7 +71,7 @@ def profile():
     return render_template("user_personal_dashboard.html")
 
 @app.route("/educate", methods=["GET", "POST"])
-def profile():
+def education_function():
     return render_template("education.html")
 
 if __name__ == '__main__':
