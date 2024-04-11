@@ -25,7 +25,7 @@ def login():
 
 @app.route('/')
 def home():
-    return render_template('main.html')
+    return render_template('login.html')
 
 @app.route('/submit_mood', methods=['POST'])
 def submit_mood():
