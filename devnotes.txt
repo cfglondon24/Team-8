@@ -1,0 +1,55 @@
+notes taken during presentation
+
+include in submisison: 
+who you are
+tech stack
+architecture plan
+
+
+------------------------------------------------------------------------------------------
+
+
+2. long sepsis / post sepsis syndrome, only 50% of adults who have sepsis are back in work in 1 year,
+- loss of limbs, fatigue, psychological issues, memory loss, PTSD
+
+scaling up online and face to face peer support groups .  also the carers, the families
+
+emotional, human connection .  (chatbot?)
+online self directed rehabilition , bring multimedia resources and track their process
+user input data smart devices to understand good and bad recovery, red flags for repeated hospital admission
+
+they want to track their progress, maybe even gameification - think of cognitive memory game
+
+Pakistani descent are 3x more likely (think of using language?)
+
+tiny charity - 3 support nurses
+
+currently age accessed is: 44 - 64, but they want to access the very old and very young
+
+care nurses currently bereavement experts, good at listening
+
+
+is there scope to train new people to train people to be good listening ears and peer support volunteers?
+- yes
+-- add part of site is asking for volunteers and setting up a training system, very attractive idea
+however, you have to remember people are vulnurable. one of the support nurses unfortunately 
+fell to suicide. so you have to support the support listeners too.
+
+
+diary tracking of recovery journey: physical cognitive psychological
+
+physical - how are you feeling (survey) - nice dashboard tracking over time - input heart rate, step count from iot 
+cognitive - memory game test (or just survey) - nice dashboard - 
+psychological - how is your mood (survey) - nice dashboard
+
+
+online groups are better attended than in person
+
+nystate age distribution
+
+underlying health conditions as a baby
+
+pdfs difficult to read, people can't concentrate
+
+
+good survey: https://orthotoolkit.com/sf-36/
