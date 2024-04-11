@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-base.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>Full Page Image</title>
     <style>
         body, html {
@@ -145,6 +148,50 @@
             margin: auto;
         }
 
+
+        .flagged-table {
+    border-collapse: collapse;
+    width:80%;
+    margin: 2rem 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 500px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.flagged-table {
+    padding: 3px;
+    margin: 3px;
+  }
+
+
+.flagged-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+.center_please {
+    display: flex;
+    justify-content: center;
+}
+
+
+button {
+    padding: 10px 20px;
+    background-color: #3498db; /* blue color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #2980b9; /* darker blue color on hover */
+}
+
+
     </style>
 </head>
 <body>
@@ -163,6 +210,35 @@
         </div>
     </div>
 
+    <div class="center_please">
+    
+      <div class="col-sm-9">
+        <div class="well">
+          <h4>Aryan's Dashboard</h4>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="well">
+              <h4>Phyical average</h4>
+              <p>10</p> 
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="well">
+              <h4>Congative Avergae</h4>
+              <p>7</p> 
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="well">
+              <h4>Average Mood</h4>
+              <p>Neutral</p> 
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+  
 
 
     <div id="contentContainer">
@@ -366,6 +442,10 @@
         <a href="#"></a>
       </div>
     </div>
+  </div>
+
+  <button onclick="window.location.href='/diary'">Diary</button>
+
     
 </body>
 </html>
