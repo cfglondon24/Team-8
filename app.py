@@ -33,28 +33,19 @@ def submit_mood():
     cognitive_score = request.form.get('cognitiveScore')
     physical_score = request.form.get('physicalScore')
     mood_message = request.form.get('moodMessage')
-    
-    print(f"Emotional Score: {emotional_score}, Cognitive Score: {cognitive_score}, Physical Score: {physical_score}, Message: {mood_message}")
-
-    return render_template('dashboard.html')
-
-
-@app.route('/tracker', methods=['POST', 'GET'])
-def tracker():
-    mood = request.form["mood"]
-    physical = request.form["physical"]
-    cognitive = request.form["cognitive"]
-    message = request.form["moodMessage"]
     now = datetime.now()
     dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
     name = session.get('username')
-    if mood < 4 or physical < 4 or cognitive < 4:
+    if int(emotional_score) < 4 or int(physical_score) < 4 or int(cognitive_score) < 4:
         highList.append(name)
-    elif mood > 3 and mood < 5 or physical > 3 and physical < 5 or cognitive > 3 or cognitive < 5:
+    elif int(emotional_score) > 3 and int(emotional_score) < 5 or int(physical_score) > 3 and int(physical_score) < 5 or int(cognitive_score) > 3 or int(cognitive_score) < 5:
         mediumList.append(name)
         flash("A Nurse has been notified")
-    tracker[name] = f"Emotional score: {mood}, Physical Score: {physical}, Cognitive score: {cognitive}, Message: {message} date and time:{dt_string}"
-    return render_template("tracker.html")
+    
+    print(f"Emotional Score: {emotional_score}, Cognitive Score: {cognitive_score}, Physical Score: {physical_score}, Message: {mood_message}")
+
+    return render_template('user_personal_dashboard.html')
+
 
 @app.before_request
 def login_handle():
@@ -62,11 +53,11 @@ def login_handle():
 
 @app.route("/nurses", methods=["GET", "POST"])
 def nurses():
-    return render_template("nurses.html")
+    return render_template("nurse_main.html")
 
 @app.route("/cognitive_game", methods=["GET", "POST"])
 def game():
-    return render_template("game.html")
+    return render_template("memorygame.html")
         
 
 if __name__ == '__main__':
