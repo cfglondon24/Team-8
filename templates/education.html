@@ -14,7 +14,7 @@
             flex-flow: column;
             align-items: center;
             font-family: "Poppins", serif;
-            background: white;
+            background:  #f16f4b;
         }
 
         h1 {
@@ -31,7 +31,7 @@
 
 
         .menu-bar {
-            background-color: #333;
+            background-color: #eb2a27;
             color: white;
             padding: 10px;
             display: flex;
@@ -58,7 +58,7 @@
             transition: background-color 0.3s ease;
         }
         .menu-bar a:hover {
-            background-color: #eb2a27;
+            background-color: #555;
         }
 
         .rectangle {
@@ -158,6 +158,7 @@ button:hover {
           <a href="/friends">Friends</a>
           <a href="/profile">Profile</a>
           <a href="/educate">Educate</a>
+
         </div>
     </div>
 
@@ -165,58 +166,32 @@ button:hover {
 
     <h1>February 2022</h1>
     <ul>
-        <li onclick="showPopup('Feb 1')">1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-        <li>6</li>
-        <li>7</li>
-        <li>8</li>
-        <li>9</li>
-        <li>10</li>
-        <li>11</li>
-        <li>12</li>
-        <li>13</li>
-        <li>14</li>
-        <li>15</li>
-        <li>16</li>
-        <li>17</li>
-        <li>18</li>
-        <li>19</li>
-        <li>20</li>
-        <li>21</li>
-        <li>22</li>
-        <li>23</li>
-        <li>24</li>
-        <li>25</li>
-        <li>26</li>
-        <li>27</li>
-        <li>28</li>
-        <!-- Add more list items for the rest of the days -->
+        <li onclick="showPopup('Feb 1')">Introduction To Sepsis</li>
+        <li>The Sepsis Manual</li>
+        <li>Sepsis: A careworkers guide</li>
+        <li>Sepsis in adults</li>
+        <li>Sepsis in children</li>
+        <li>Sepsis in children</li>
     </ul>
+
+
+
 
     <div class="center" id="popup">
         <span id="close" onclick="closePopup()">X</span>
 
-
-        <h1> Mood </h1>
-
-        <div class="rectangle"> Mood: Neutral </div>
-
-
-        <h1> Physical </h1>
-
-        <div class="rectangle"> Physical: 80 </div>
-
-        <h1> Cognative </h1>
-
-        <div class="rectangle">Score: 7</div>
-
-        <h1> Notes </h1>
-
-        <div class="rectangle"> Today I felt ill and could not get out of bed</div>
-
+        <div class="dropdown">
+            <select id="dropdown" onchange="changeGraph()">
+                <option value="option1">1-10</option>
+                <option value="option2">11-20</option>
+                <option value="option3">20-50</option>
+                <option value="option3">40+</option>
+            </select>
+            <div class="dropdown-content" id="graph_dropdown">
+              <a href="#"></a>
+            </div>
+          </div>
+        </div>
     </div>
 
     <script>
@@ -225,16 +200,32 @@ button:hover {
                 document.getElementById('popup').style.display = 'block';
             }
         }
-
+    
         function closePopup() {
             document.getElementById('popup').style.display = 'none';
         }
+    
+        function changeGraph() {
+            var selectedOption = document.getElementById('dropdown').value;
+
+            if (selectedOption === "option1"){
+                document.getElementById('selectedOption').innerText = " What is Sepsis? Sepsis is a very serious condition caused by an infection that can make you very sick. It's one of the main reasons people go to the hospital and can even be life-threatening"
+            }
+            else if (selectedOption === "option2"){
+                document.getElementById('selectedOption').innerText = "Sepsis is a severe medical condition that occurs when the body's response to an infection causes inflammation throughout the body. It can be life-threatening and requires prompt medical treatment.";
+            }
+            else if (selectedOption === "option3"){
+                document.getElementById('selectedOption').innerText = "Sepsis is a severe medical condition that occurs when the body's response to an infection causes inflammation throughout the body. It can be life-threatening and requires prompt medical treatment. When your body detects an infection, it initiates an immune response to fight off the harmful germs. However, in some cases, this response can become too strong, leading to widespread inflammation. This inflammation can cause damage to organs and tissues and disrupt normal bodily functions.";
+            }
+            else{
+                document.getElementById('selectedOption').innerText = "Sepsis is a severe medical condition that occurs when the body's response to an infection causes inflammation throughout the body. It can be life-threatening and requires prompt medical treatment. When your body detects an infection, it initiates an immune response to fight off the harmful germs. However, in some cases, this response can become too strong, leading to widespread inflammation. This inflammation can cause damage to organs and tissues and disrupt normal bodily functions. Symptoms of sepsis can vary but often include fever, increased heart rate, rapid breathing, and confusion. If left untreated, sepsis can progress to severe sepsis or septic shock, where blood pressure drops dangerously low and organs fail.";
+            }
+        }
     </script>
 
+<div id="selectedOption"></div>
 
-<div class="center_please">
-    <button onclick="window.location.href='/profile'">Dashboard</button>
-</div>
+
 
 </body>
 </html>

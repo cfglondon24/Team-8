@@ -70,6 +70,9 @@ def friends():
 def profile():
     return render_template("user_personal_dashboard.html")
 
+@app.route("/educate", methods=["GET", "POST"])
+def education_function():
+    return render_template("education.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
